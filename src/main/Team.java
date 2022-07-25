@@ -14,11 +14,19 @@ public class Team {
 
     @Override
     public boolean equals(Object obj) {
-      return false;
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Team)) {
+            return false;
+        }
+
+        return this.country.equals(((Team) obj).getCountry());
     }
 
     @Override
     public int hashCode() {
-        return 0;
+        return country.hashCode();
     }
 }

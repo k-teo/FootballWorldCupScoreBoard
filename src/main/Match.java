@@ -28,7 +28,17 @@ public class Match {
     }
 
     public void updateScore(Team team) throws WrongTeamInMatchException, UpdateFinishedMatchException {
-
+        if (!isFinished) {
+            if(team.equals(homeTeam)) {
+                score.updateScore(1, 0);
+            } else if (team.equals(awayTeam)) {
+                score.updateScore(0, 1);
+            } else {
+                throw new WrongTeamInMatchException(team.getCountry() + " does not match any team in a match");
+            }
+        } else {
+            throw new UpdateFinishedMatchException("A finished match cannot be updated");
+        }
     }
 
     public Team getHomeTeam() {
@@ -47,16 +57,17 @@ public class Match {
         return score;
     }
 
+    public int getTotalScore() {
+        return score.getTotalScore();
+    }
+
     public Date getDateOfStart() {
         return dateOfStart;
     }
 
-    public int getTotalScore() {
-        return -1;
-    }
-
     @Override
     public String toString() {
-        return "";
+        return homeTeam.getCountry() + " " + score.getHomeTeamScore() + " - "
+                + awayTeam.getCountry() + " " + score.getAwayTeamScore();
     }
 }

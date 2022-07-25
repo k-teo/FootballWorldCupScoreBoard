@@ -6,9 +6,13 @@ public class Score {
     private int awayTeamScore;
 
     public Score() {
+        homeTeamScore = 0;
+        awayTeamScore = 0;
     }
 
     public void updateScore(int homeTeamScore, int awayTeamScore) {
+        this.homeTeamScore += homeTeamScore;
+        this.awayTeamScore += awayTeamScore;
     }
 
     public int getHomeTeamScore() {
@@ -20,7 +24,9 @@ public class Score {
     }
 
     public int getTotalScore() {
-        return -1;
+        return homeTeamScore + awayTeamScore;
     }
+
+
 
 }

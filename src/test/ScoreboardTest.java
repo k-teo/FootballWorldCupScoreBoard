@@ -64,6 +64,8 @@ public class ScoreboardTest {
         // given
         Match match1 = new Match(new Team(POLAND), new Team(GERMANY));
         Match match2 = new Match(new Team(RUSSIA), new Team(ENGLAND));
+        scoreboard.addMatch(match1);
+        scoreboard.addMatch(match2);
 
         // when
         List<Match> matches = scoreboard.getMatches();
